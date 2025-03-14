@@ -12,13 +12,27 @@ A reminder app where you can make a schedule with a subject, message, and date. 
 
 ## Run the app
 
+If you are using Windows, manually add the SQLite file in the backend/database folder with the name schedule_DB.sqlite
+
+In app/Http/Middleware/VerifyCsrfToken.php add /api/* in $except list:
+
+ protected $except = [
+
+        'api/*'
+
+    ];
+
 In the VS Code terminal, run:
 
 1. composer install --no-dev --optimize-autoloader
 
 2. cd backend
+3. php artisan config:clear
+4. php artisan cache:clear
+5. php artisan route:clear
+6. php artisan migrate
 
-3. php artisan serve
+7. php artisan serve
 
 In the frontend, open index.html, if you are using a live server, disable auto-commit changes or the web page will reload over and over.
 
