@@ -1,0 +1,551 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    background: linear-gradient(135deg, #00332e, #005f56);
+    background-attachment: fixed; 
+    padding-top: 20px;
+    gap: 30px;
+}
+
+
+hr {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1); 
+    width: 100%; 
+    margin: 10px 0; 
+}
+
+
+input[type="text"].error, textarea.error, input[type="date"].error {
+    border: 3px solid #dc3545;  
+    border-radius: 5px;      
+    box-sizing: border-box;  
+}
+
+.error-message {
+    color: #dc3545;              
+    font-size: 20px;         
+    font-weight: bold;
+}
+
+/*-----------------------------calendar---------------------------------------------*/
+
+.calendar {
+    width: 400px; 
+    background: linear-gradient(135deg, #004d40, #00796b);
+    color: white;
+    border-radius: 15px;
+    padding: 30px; 
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.month-banner {
+    background: #00695c;
+    padding: 12px 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.month {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0 15px;
+}
+
+.month-name {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.year-circle {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-top: 15px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.days span {
+    padding: 15px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.today {
+    background: #04a394 !important;
+    font-weight: bold;
+}
+
+.reminder {
+    background-color: orange !important;
+    color: white !important;
+}
+
+.prev-month, .next-month {
+    opacity: 0.5;
+}
+
+button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/*-------------------------------schedule----------------------------------*/
+
+button:hover {
+    color: #04a394;
+}
+
+.schedule {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    width: fit-content;
+    max-width: 400px; 
+    background: linear-gradient(135deg, #003d33, #00695c);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    word-break: break-all;
+    cursor: pointer;
+}
+
+.schedule p {
+    margin: 0;
+    color: white;
+    word-break: break-all;
+}
+
+.div-top {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center; 
+    color: white;
+    width: 400px; 
+    word-break: break-all;
+}
+
+.div-top h2 {
+    margin: 0;
+    font-size: 20px;
+
+    overflow-wrap: break-word;
+    max-width: 70%; 
+    white-space: normal; 
+    word-break: break-all;
+}
+
+#schedule {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    margin: 20px;
+    margin-top: 0;
+    position: relative;
+    
+}
+
+#add-button {
+    background: #04a394;
+    border: none;
+    color: white;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#add-button:hover {
+    background: #038677;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center; 
+    width: fit-content;
+}
+
+.button-remove {
+    background: red;
+    border: none;
+    color: white;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-right: 10px; 
+}
+
+/*-------------------------------add popup------------------------------------------*/
+body.modal-open {
+    overflow: hidden;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 998;
+}
+
+#popup-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #004d40, #00796b);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    width: 450px;
+    z-index: 999;
+    color: white;
+    text-align: center;
+}
+
+#popup-form p {
+    padding: 0;
+    margin: 0;  
+    line-height: 1.4; 
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"],
+input[type="date"] {
+    width: 96%; 
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    margin-left: auto; 
+    margin-right: auto; 
+
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 96%; 
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    margin-left: auto; 
+    margin-right: auto; 
+    height: 120px;
+    resize: none;
+
+    box-sizing: border-box;
+}
+
+.buttons {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    margin-top: 15px;
+    width: 99%;
+}
+
+#add-schedule, #cancel {
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    width: 48%;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+#add-schedule {
+    background-color: #04a394;
+    color: white;
+}
+
+#cancel {
+    background-color: #dc3545;
+    color: white;
+}
+
+#add-schedule:hover {
+    background-color: #038677;
+}
+
+#cancel:hover {
+    background-color: #b02a37;
+}
+
+/*-------------------------------Edit popup----------------------------------*/
+
+#edit-popup-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#edit-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 998;
+}
+
+#edit-popup-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #004d40, #00796b);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    width: 450px;
+    z-index: 999;
+    color: white;
+    text-align: center;
+}
+#edit-popup-form p {
+    padding: 0;
+    margin: 0;  
+    line-height: 1.4; 
+}
+
+#edit-schedule, #edit-cancel {
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    width: 48%;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+#edit-schedule {
+    background-color: #04a394;
+    color: white;
+}
+
+#edit-cancel {
+    background-color: #dc3545;
+    color: white;
+}
+
+#edit-schedule:hover {
+    background-color: #038677;
+}
+
+#edit-cancel:hover {
+    background-color: #b02a37;
+}
+
+/*------------------------------Schedule removed-----------------------------------------------*/
+
+#popup-schedule-removed {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #004d40, #00796b);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    width: 350px;
+    z-index: 999;
+    color: white;
+    text-align: center;
+}
+
+#ok-button {
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    font-weight: bold;
+    background-color: #04a394;
+    color: white;
+}
+
+#ok-button:hover {
+    background-color: #038677;
+}
+
+#popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 998;
+}
+
+/*-------------------------------------popup saved-----------------------------------------*/
+
+#popup-overlay-saved-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #004d40, #00796b);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    width: 350px;
+    z-index: 999;
+    color: white;
+    text-align: center;
+}
+
+#popup-overlay-saved {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 998;
+}
+
+#ok-button-saved {
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    font-weight: bold;
+    background-color: #04a394;
+    color: white;
+}
+
+#ok-button-saved:hover {
+    background-color: #038677;
+}
+
+
+@media (max-width: 768px) {
+
+    body {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        min-height: 100vh;
+        padding: 20px 0;
+        overflow-y: auto;
+    }
+
+    .calendar {
+        order: 1;
+        width: 95%;
+        max-width: 380px;
+    }
+
+    #add-button {
+        order: 2;
+        margin: 15px 0;
+    }
+
+    #schedule {
+        order: 3;
+        width: 95%;
+        max-width: 380px;
+        margin: 0;
+    }
+
+    .wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button-remove {
+        margin: 10px auto 0;
+        margin-bottom: 20px;
+    }
+
+    #popup-form,
+    #edit-popup-form,
+    #popup-schedule-removed,
+    #popup-overlay-saved-container {
+        width: 95%;
+        max-width: 380px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    textarea {
+        width: 96%;
+    }
+}

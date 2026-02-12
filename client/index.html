@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduler</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="schedule">
+         <!--Html elements with data from db generate here-->
+         <button id="add-button">+</button>
+    </div>
+   
+
+    <div class="calendar">
+        <div class="header">
+            <div class="month-banner">
+                <button id="prev-month">&lt;</button>
+                <span class="month"></span>
+                <span class="month-name"></span>
+                <button id="next-month">&gt;</button>
+            </div>
+            <div class="year-circle">
+                <span class="year"></span>
+            </div>
+        </div>
+        <div class="weekdays">
+            <span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
+        </div>
+        <div class="days"><!--Days get outputed here--></div>
+    </div>
+
+    <!-- Add Popup form -->
+    <form id="popup-form" method="POST">
+        <div class="popup-content">
+            <h1>Schedule</h1>
+            <input type="text" id="subject" placeholder="Subject">
+            <textarea id="message" placeholder="Enter your message"></textarea>
+            <input type="date" id="date">
+            <div class="buttons">
+                <button id="add-schedule" type="button">Add</button>
+                <button id="cancel" type="button">Cancel</button>
+            </div>
+        </div>
+    </form>
+
+
+    <!-- Overlay -->
+    <div id="edit-overlay"></div> 
+    <!-- Edit Popup forma -->
+    <form id="edit-popup-form" method="PUT">
+        <div id="edit-popup-content">
+            <h1>Edit Schedule</h1>
+            <input type="text" id="edit-subject" placeholder="Subject">
+            <textarea id="edit-message" placeholder="Enter your message"></textarea>
+            <input type="date" id="edit-date">
+            <div class="buttons">
+                <button id="edit-schedule" type="button">Save</button>
+                <button id="edit-cancel" type="button">Cancel</button>
+            </div>
+        </div>
+    </form>
+
+
+    <!--schedule removed-->
+    <div id="popup-overlay"></div>
+    <div id="popup-schedule-removed">
+        <div class="popup-content">
+            <h2>Schedule Removed</h2>
+            <button id="ok-button">OK</button>
+        </div>
+    </div>
+
+     <!-- Popup for Schedule Saved -->
+     <div id="popup-overlay-saved"></div>
+     <div id="popup-overlay-saved-container">
+        <div class="popup-content">
+            <h2>Schedule Saved</h2>
+            <button id="ok-button-saved">OK</button>
+        </div>
+    </div>
+
+    <script src="js/editForm.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/addForm.js"></script>
+    <script src="js/schedule.js"></script>
+</body>
+</html>
+
