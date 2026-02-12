@@ -22,9 +22,11 @@ In the VS Code terminal, run:
 
 1. cd server
 2. composer install
-3. php artisan serve
-4. cd client
-5. npm install
+3. php artisan key:generate
+4. php artisan migrate
+5. php artisan serve
+6. cd client
+7. npm install
 
 In the frontend, open index.html, if you are using a live server, disable auto-commit changes or the web page will reload over and over.
 
